@@ -9,9 +9,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+/**
+ * Represents a utility class for working with a database.
+ */
+
 public class DataBase {
 
   private static Connection conn = null;
+
+  /**
+   * Gets a connection to the database using the properties from the "db.properties" file.
+   *
+   * @return A database connection.
+   * @throws DbException If an error occurs while establishing the database connection.
+   */
 
   public static Connection getConnection() {
     if (conn == null) {
@@ -25,6 +36,12 @@ public class DataBase {
     }
     return conn;
   }
+
+  /**
+   * Closes the database connection if it is open.
+   *
+   * @throws DbException If an error occurs while closing the database connection.
+   */
 
   public static void closeConnection() {
     if (conn != null) {
@@ -46,6 +63,13 @@ public class DataBase {
     }
   }
 
+  /**
+   * Closes a SQL Statement if it is open.
+   *
+   * @param st The SQL Statement to be closed.
+   * @throws DbException If an error occurs while closing the SQL Statement.
+   */
+
   public static void closeStatement(Statement st) {
     if (st != null) {
       try {
@@ -55,6 +79,13 @@ public class DataBase {
       }
     }
   }
+
+  /**
+   * Closes a ResultSet if it is open.
+   *
+   * @param rs The ResultSet to be closed.
+   * @throws DbException If an error occurs while closing the ResultSet.
+   */
 
   public static void closeResultSet(ResultSet rs) {
     if (rs != null) {
